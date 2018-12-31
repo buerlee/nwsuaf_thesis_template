@@ -1,0 +1,71 @@
+%---------------------------------------------------------------------------%
+%->> Document class declaration
+%---------------------------------------------------------------------------%
+\documentclass[doublesided, fontset=windowsnew]{Style/nwsuafthesis}%
+% \documentclass[doublesided]{Style/nwsuafthesis}%
+
+
+%---------------------------------------------------------------------------%
+%->> Document settings
+%---------------------------------------------------------------------------%
+\usepackage[authoryear,myhdr,list]{Style/artratex}% document settings
+\usepackage{Style/artracom}
+
+%---------------------------------------------------------------------------%
+%->> Document inclusion
+%---------------------------------------------------------------------------%
+%\includeonly{Tex/Chap_1,...,Tex/Chap_N}% selected files compilation
+
+
+%---------------------------------------------------------------------------%
+%->> Document content
+%---------------------------------------------------------------------------%
+\begin{document}
+
+%-
+%-> Frontmatter: title page, abstract, content list, symbol list, preface
+%-
+\frontmatter% initialize the environment
+\input{Tex/01_Frontpages}% title page, abstract, dedication
+{% content list region
+\linespread{1.2}% local line space
+%\intotoc{\contentsname}% add link to contents table and bookmark
+\tableofcontents% contents catalog
+%\intotoc{\listfigurename}% add link to contents table and bookmark
+\listoffigures% figures catalog
+%\intotoc{\listtablename}% add link to contents table and bookmark
+\listoftables% tables catalog
+}
+
+
+%-
+%-> Prematter: list of symbols, preface content
+%-
+% \input{Tex/02_Prematter}% 
+
+
+%-
+%-> Mainmatter
+%-
+\mainmatter% initialize the environment
+\input{Tex/03_Mainmatter}% main content
+
+%-
+%-> Appendix
+%-
+\cleardoublepage%
+\appendix% initialize the environment
+\input{Tex/04_Appendix}% appendix content
+
+%-
+%-> Backmatter: bibliography, glossary, index
+%-
+\backmatter% initialize the environment
+\intotoc{\bibname}% add link to contents table and bookmark
+\bibliography{Biblio/ref}% bibliography
+\input{Tex/05_Backmatter}% other information
+
+
+\end{document}
+%---------------------------------------------------------------------------%
+
